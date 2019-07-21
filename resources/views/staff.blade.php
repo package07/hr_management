@@ -1,5 +1,5 @@
 <!doctype html>
-hello world
+
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -71,7 +71,8 @@ hello world
         <br/>
         <h3>
             Advance Operation Service company (AOI,PKG,MO)
-             <a href="{{route('staff.index')}}"><button type="button" class="btn btn-dark" style="float: right;">+ Add staff</button><a>
+             <a href="{{route('staff.index')}}">
+             <button type="button" class="btn btn-dark" style="float: right;">+ Add staff</button><a>
         </h3>
         <table class="table">
             <thead class="thead-dark">

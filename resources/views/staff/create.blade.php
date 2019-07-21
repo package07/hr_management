@@ -1,113 +1,105 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
 
-        <title>Laravel</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-
-    <script src="{{ asset('js/app.js') }}" defer></script>
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-     <br> 
-    <h1 style="text-align: center">BOOK STORE</h1>
-
+ 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
 <div class="container">
+<br/>
             <div class="row">
-                 <h3>Form Add Staff</h3>
+                 <h2 style="center">Add Staff Register</h2>
             </div>
             <div class="row">
                 <div class="col-md-12">
 
-                    <form action ="{{route('book.store')}}" method="post">
+                <div class="row">
+                </div>
+                    <form action="{{route('staff.store')}}" method="post">
                         @csrf
-                        <div class="form-group">
-                            <label for="book_name">Book Name</label>
-                            <input type="text" class="form-control" id="book_name" placeholder="Book Name" name="book_name" required>  
-                        </div>
-                        <div class="form-group">
-                            <label for="type">Type</label>
-                            <input type="text" class="form-control" id="type" placeholder="Type" name="type" required>
-                        </div><div class="form-group">
-                            <label for="writer">Writer</label>
-                            <input type="text" class="form-control" id="writer" placeholder="Writer" name="writer" required>
-                        </div><div class="form-group">
-                            <label for="price">Price</label>
-                            <input type="number" class="form-control" id="price" placeholder="Price" name="price" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-
-                        <a href="{{route('dashboard')}}">
-                            <button type="button" class="btn btn-danger">Cancel</button>
-                        </a>
-
-                    </form>
+                        <form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username" placeholder="Username" name="username" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="birthday">Birthday</label>
+      <input class="date form-control" type="text" placeholder="Birthday" required>
+      <script type="text/javascript">
+    $('.date').datepicker({  
+       format: 'dd-mm-yyyy'
+     });  
+</script> 
+    </div>
+  <div class="form-group col-md-6">
+    <label for="position">Position</label>
+    <select  class="custom-select custom-select-lg mb-3">
+  <option selected style="color:gray">Position</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+  <option value="4">four</option>
+  <option value="5">five</option>
+  <option value="6">six</option>
+</select>
+</div>
+  
+  </div>
+  <div class="form-group">
+  <label for="division">Divisoin</label>
+    <select  class="custom-select custom-select-lg mb-3">
+  <option selected style="color:gray">Position</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+  <option value="4">four</option>
+  <option value="5">five</option>
+  <option value="6">six</option>
+</select>  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">City</label>
+      <input type="text" class="form-control" id="inputCity">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">State</label>
+      <select id="inputState" class="form-control">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">Zip</label>
+      <input type="text" class="form-control" id="inputZip">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label" for="gridCheck">
+        Check me out
+      </label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+                       
+    <a href="{{route('staff')}}"><input type="button" class="btn btn-danger" value="Cancel"></a>
+</form>
                 </div>
             </div>
         </div>
-
-  </tbody>
-</table>
-
-    </div>
-    </body>
+</body>
 </html>
