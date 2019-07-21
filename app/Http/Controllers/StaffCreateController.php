@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
+use App\Staff;
+
 
 class StaffCreateController extends Controller
 {
@@ -13,7 +16,9 @@ class StaffCreateController extends Controller
      */
     public function index()
     {
+        
         return view('staff.create');
+        
     }
 
     /**
@@ -36,13 +41,13 @@ class StaffCreateController extends Controller
     {
         Staff::create([
             'username' =>$request->username,
-            'brithday' =>$request->brithday,
+            'birthday' =>$request->birthday,
             'position' =>$request->position,
             'division' =>$request->division, 
             'division_id' =>$request->division_id,
             'telephone' =>$request->telephone,
             'salary' =>$request->salary,
-
+            'gender' =>$request->gender,
        ]);
        return redirect(route('staff'));
     }
@@ -64,11 +69,6 @@ class StaffCreateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
-
     /**
      * Update the specified resource in storage.
      *
@@ -76,9 +76,30 @@ class StaffCreateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+
+    public function update(Request $request)
     {
-        //
+        Staff::where('id',$request->id)
+        ->update([
+
+            'position' =>$request->position,
+            'division' =>$request->division, 
+            'division_id' =>$request->division_id,
+            'telephone' =>$request->telephone,
+            'salary' =>$request->salary,
+        
+    
+
+        ]);
+        return redirect(route('staff'));
+    }
+ 
+
+    public function edit($id,Request $request)
+    {
+
+       
+        return view('staff.update', ['id' => $id] );
     }
 
     /**
@@ -91,4 +112,11 @@ class StaffCreateController extends Controller
     {
         //
     }
+
+    public function delete(Request $request)
+    {
+        Staff::where('id', $request->id)->delete();
+        return redirect(route('staff'));
+    }
+  
 }

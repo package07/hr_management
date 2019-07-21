@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use App\Staff;
 
@@ -15,12 +16,13 @@ class StaffController extends Controller
     public function index()
     {
         //
+
         $staff = Staff::all();
         //dd($staff);
 
       //  return view('dashboard' , ['books'=>$books]);
 
-        return view('staff');
+        return view('staff',['staff' => $staff]);
     }
 
     /**
@@ -42,16 +44,20 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
+
         Staff::create([
             'username' =>$request->username,
-            'brithday' =>$request->brithday,
+            'birthday' =>$request->birthday,
             'position' =>$request->position,
             'division' =>$request->division, 
             'division_id' =>$request->division_id,
             'telephone' =>$request->telephone,
             'salary' =>$request->salary,
+            'gender' =>$request->gender,
 
        ]);
+
        return redirect(route('staff'));
     }
     
@@ -100,4 +106,5 @@ class StaffController extends Controller
     {
         //
     }
+  
 }
