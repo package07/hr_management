@@ -6,7 +6,8 @@ use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use App\Staff;
 
-class StaffController extends Controller
+
+class StaffCreateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,14 +16,9 @@ class StaffController extends Controller
      */
     public function index()
     {
-        //
-
-        $staff = Staff::all();
-        //dd($staff);
-
-      //  return view('dashboard' , ['books'=>$books]);
-
-        return view('staff',['staff' => $staff]);
+        
+        return view('staff.create');
+        
     }
 
     /**
@@ -33,7 +29,6 @@ class StaffController extends Controller
     public function create()
     {
         //
-
     }
 
     /**
@@ -44,8 +39,6 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
-
         Staff::create([
             'username' =>$request->username,
             'birthday' =>$request->birthday,
@@ -55,12 +48,9 @@ class StaffController extends Controller
             'telephone' =>$request->telephone,
             'salary' =>$request->salary,
             'gender' =>$request->gender,
-
        ]);
-
        return redirect(route('staff'));
     }
-    
 
     /**
      * Display the specified resource.
@@ -79,11 +69,6 @@ class StaffController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
-
     /**
      * Update the specified resource in storage.
      *
@@ -91,9 +76,30 @@ class StaffController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+
+    public function update(Request $request)
     {
-        //
+        Staff::where('id',$request->id)
+        ->update([
+
+            'position' =>$request->position,
+            'division' =>$request->division, 
+            'division_id' =>$request->division_id,
+            'telephone' =>$request->telephone,
+            'salary' =>$request->salary,
+        
+    
+
+        ]);
+        return redirect(route('staff'));
+    }
+ 
+
+    public function edit($id,Request $request)
+    {
+
+       
+        return view('staff.update', ['id' => $id] );
     }
 
     /**
@@ -105,6 +111,12 @@ class StaffController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function delete(Request $request)
+    {
+        Staff::where('id', $request->id)->delete();
+        return redirect(route('staff'));
     }
   
 }

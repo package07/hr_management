@@ -16,12 +16,13 @@ class CreateStaffTable extends Migration
         Schema::create('staff', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('username');
-            $table->date('brithday');
+            $table->string('birthday');
             $table->string('position');
             $table->string('division');  
             $table->integer('division_id');
-            $table->integer('telephone');
-            $table->integer('salary');
+            $table->string('telephone');
+            $table->string('salary');
+            $table->string('gender');
             $table->timestamps();
         });
     }

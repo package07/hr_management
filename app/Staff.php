@@ -8,11 +8,12 @@ class Staff extends Model //model เวลาเรียก
 {
     protected $fillable =[
           'username',
-          'brithday',
+          'birthday',
           'position',
           'division', 
           'division_id',
           'telephone',
           'salary',
+          'gender',
      ];
 }

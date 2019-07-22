@@ -19,35 +19,17 @@
 
 
 <div class="container">
-            <form action="{{route('staff.store')}}" method="post" class="form-horizontal" role="form">
-              @csrf
-             
+           
               <div class="text-center" style="color:red">
-                <h2>Registration</h2>
+                <h2>Edit Profile {{$id}} </h2>
                </div>
                     <br>
-                <div class="form-group">
-                    <label for="username" class="col-sm-2 control-label">Username*</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="username" placeholder="Username"  name="username" class="form-control" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                <label for="birthday" class="col-sm-2 control-label">Date of Birth*</label>
-                    <div class="col-sm-9">
-                <input class="date form-control" type="text" id="birthday" name="birthday" placeholder="Birthday" required>
-                  <script type="text/javascript">
-                               $('.date').datepicker({  
-                               format: 'dd-mm-yyyy'
-                                       });            
-                      </script> 
-                        </div>
-                </div>
+                    <form action="{{route('staff.update')}}" method="post" class="form-horizontal" role="form">
+                        @csrf       
                 <div class="form-group">
                     <label for="telephone" class="col-sm-2 control-label">Phone number*</label>
                     <div class="col-sm-9">
-                        <input type="phoneNumber" id="telephone" placeholder="Phone number" name="telephone"  class="form-control">
+                        <input type="phoneNumber" id="telephone" placeholder="Phone number" name="telephone"  class="form-control" required>
                         <span class="help-block">Your phone number won't be disclosed anywhere </span>
                     </div>
                 </div>
@@ -94,27 +76,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-sm-2">Gender</label>
-                    <div class="col-sm-6">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <label class="radio-inline">
-                                    <input type="radio" id="femaleRadio" name="gender" value="Female" required>Female
-                                </label>
-                            </div>
-                            <div class="col-sm-4">
-                                <label class="radio-inline">
-                                    <input type="radio" id="maleRadio" name="gender" value="Male" required>Male
-                                </label>
-                            </div>
-                        </div>
-                    </div> 
-                </div> <!-- /.form-group -->
-                <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-2">
                         <span class="help-block">*Required fields</span>
                     </div>
                 </div>
+                <input id='id' name='id' value='{{$id}}' type='hidden'>
                 <button class="btn btn-primary col-sm-9 col-sm-offset-2" type="submit">Submit</button>
                      <br>   <br> 
                        <a href="{{route('staff')}}">
